@@ -16,15 +16,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    CaptureThread.cpp \
-    DisplayThread.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
-    CaptureThread.h \
-    DisplayThread.h \
-    FrameData.h \
     mainwindow.h
 
 FORMS += \
@@ -35,7 +30,13 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32: LIBS += D:/documents/qt/OpenCV-MinGW-Build-OpenCV-4.5.2-x64/x64/mingw/bin/ -llibopencv_core452 -llibopencv_highgui452 -llibopencv_imgproc452 -llibopencv_calib3d452 -llibopencv_imgcodecs452 -llibopencv_videoio452
+win32: LIBS += -L$$PWD/OpenCV-MinGW-Build-OpenCV-4.5.2-x64/x64/mingw/bin/ -llibopencv_core452
+LIBS += -L$$PWD/OpenCV-MinGW-Build-OpenCV-4.5.2-x64/x64/mingw/bin/ -llibopencv_highgui452
+LIBS += -L$$PWD/OpenCV-MinGW-Build-OpenCV-4.5.2-x64/x64/mingw/bin/ -llibopencv_imgproc452
+LIBS += -L$$PWD/OpenCV-MinGW-Build-OpenCV-4.5.2-x64/x64/mingw/bin/ -llibopencv_calib3d452
+LIBS += -L$$PWD/OpenCV-MinGW-Build-OpenCV-4.5.2-x64/x64/mingw/bin/ -llibopencv_imgcodecs452
+LIBS += -L$$PWD/OpenCV-MinGW-Build-OpenCV-4.5.2-x64/x64/mingw/bin/ -llibopencv_videoio452
+LIBS += -L$$PWD/OpenCV-MinGW-Build-OpenCV-4.5.2-x64/x64/mingw/bin/ -llibopencv_objdetect452
 
-INCLUDEPATH += D:/documents/qt/OpenCV-MinGW-Build-OpenCV-4.5.2-x64/include
-DEPENDPATH += D:/documents/qt/OpenCV-MinGW-Build-OpenCV-4.5.2-x64/include
+INCLUDEPATH += $$PWD/OpenCV-MinGW-Build-OpenCV-4.5.2-x64/include
+DEPENDPATH += $$PWD/OpenCV-MinGW-Build-OpenCV-4.5.2-x64/include
